@@ -77,23 +77,18 @@ Snort Rule
       <input type="text" name="protocol" autocomplete="off" onkeyup="this.setAttribute('value', this.value);" value="">
       <label>Protocol</label>
     </div>
+  <input type="file" name="file" autocomplete="off" required>
+    <input type="submit" value="Submit">
 
   {% with messages = get_flashed_messages() %}
     {% if messages %}
-    <ul class=flashes>
+    <strong><ul class=flashes></strong>
     {% for message in messages %}
       <li>{{ message }}</li>
     {% endfor %}
     </ul>
     {% endif %}
   {% endwith %}
-   
-
-    
-    
-      <input type="file" name="file" autocomplete="off" required>
-    <input type="submit" value="Submit">
-
 
     <p class="space-above"><strong>{{ message }}</strong></p>
 
