@@ -7,7 +7,6 @@ install: skip
 
 script:
   - docker build -t akshaysachdeva1234/snortfrontend .
-  - cd ..
   #Push Images to Docker Hub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push akshaysachdeva1234/snortfrontend
