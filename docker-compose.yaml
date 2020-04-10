@@ -1,7 +1,7 @@
 version: "3.1"
 
 services:
-  frontend:
+  snortfrontend:
     image: akshaysachdeva1234/snortfrontend:latest
     container_name: snortfrontend
     restart: always
