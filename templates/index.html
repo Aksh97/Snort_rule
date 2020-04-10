@@ -78,7 +78,6 @@ Snort Rule
       <label>Protocol</label>
     </div>
 
-<p>
   {% with messages = get_flashed_messages() %}
     {% if messages %}
     <ul class=flashes>
@@ -88,23 +87,13 @@ Snort Rule
     </ul>
     {% endif %}
   {% endwith %}
-</p>    
+   
 
     
     
       <input type="file" name="file" autocomplete="off" required>
     <input type="submit" value="Submit">
-<p>
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-    {% endif %}
-  {% endwith %}
-</p> 
+
 
     <p class="space-above"><strong>{{ message }}</strong></p>
 
