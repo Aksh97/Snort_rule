@@ -16,7 +16,7 @@ class AutoSnort:
         #Begin global variables
         self.file = file
         self.fileString = ""
-        self.source = "192.68.1.56"
+        self.source = source
         self.destination = destination
         self.sourcePort = sourcePort
         self.destinationPort = destinationPort
