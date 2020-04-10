@@ -56,7 +56,7 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(os.getcwd(), filename))
-            flash('File Successfully Uploaded. Processing...')
+            flash('File Successfully Uploaded. Generating Snort Rule..')
             if request.form['source'] == "":
                 source = "any"
             else:
@@ -84,7 +84,7 @@ def upload_file():
 
             a = AutoSnort(source,destination,sourcePort,destinationPort,protocol,filename)
             x =  a.execute()
-            
+            flash(x)
             return redirect('/')
         else:
             flash('Allowed file type is pcap')

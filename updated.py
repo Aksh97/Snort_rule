@@ -305,7 +305,7 @@ class AutoSnort:
     #Combines all the self.signature elements into a valid signature string
     def combineSig(self):
 
-        self.signature = "SNORT Rule:  alert "
+        self.signature = "SNORT Rule: " + " " +" alert "
         self.signature = self.signature + self.protocol + " "
         self.signature = self.signature + self.source + " "
         self.signature = self.signature + self.sourcePort + " -> "
