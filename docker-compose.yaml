@@ -6,7 +6,7 @@ services:
     container_name: snortfrontend
     restart: always
     ports:
-      - "80:5000"
+      - "5000:5000"
   nginx:
     image: nginx:1.17
     container_name: nginx
