@@ -85,14 +85,14 @@ def upload_file():
             a = AutoSnort(source,destination,sourcePort,destinationPort,protocol,filename)
             x =  a.execute()
             
-            return redirect('/index.html')
+            return redirect('/')
         else:
             flash('Allowed file type is pcap')
             #return redirect(request.url)
-            return redirect('/index.html')
+            return redirect('/')
 
 
-@app.route('/index.html', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     #form = NameForm(request.form)
     message = x

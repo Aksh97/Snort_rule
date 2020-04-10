@@ -6,21 +6,15 @@ services:
 install: skip
 
 script:
-  #Build Backend Service
-  - cd sentinal_backend/
-  - docker build -t akshaysachdeva1234/backend .
-  #Build Frontend Service
-  - cd ../sentinal_frontend/
-  - docker build -t akshaysachdeva1234/frontend .
+  - docker build -t akshaysachdeva1234/snortfrontend .
   - cd ..
   #Push Images to Docker Hub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push akshaysachdeva1234/backend
-  - docker push akshaysachdeva1234/frontend
+  - docker push akshaysachdeva1234/snortfrontend
   #Deploy on AWS EC2 from Master
-  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_EVENT_TYPE == "push" ]; then openssl aes-256-cbc -k "$DECRYPT_KEY" -in sentiments.pem.enc -out sentiments.pem -d -md sha256; fi
-  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_EVENT_TYPE == "push" ]; then chmod 400 sentiments.pem; fi
-  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_EVENT_TYPE == "push" ]; then ssh -o StrictHostKeyChecking=no -i sentiments.pem ubuntu@ec2-18-205-149-71.compute-1.amazonaws.com "cd sentiments && sudo git pull"; fi
-  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_EVENT_TYPE == "push" ]; then ssh -o StrictHostKeyChecking=no -i sentiments.pem ubuntu@ec2-18-205-149-71.compute-1.amazonaws.com "cd sentiments && docker-compose down"; fi
-  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_EVENT_TYPE == "push" ]; then ssh -o StrictHostKeyChecking=no -i sentiments.pem ubuntu@ec2-18-205-149-71.compute-1.amazonaws.com "cd sentiments && docker image prune -a -f"; fi
-  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_EVENT_TYPE == "push" ]; then ssh -o StrictHostKeyChecking=no -i sentiments.pem ubuntu@ec2-18-205-149-71.compute-1.amazonaws.com "cd sentiments && docker-compose up -d"; fi
+  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_EVENT_TYPE == "push" ]; then openssl aes-256-cbc -k "$DECRYPT_KEY" -in akshay.pem.enc -out akshay.pem -d -md sha256; fi
+  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_EVENT_TYPE == "push" ]; then chmod 400 akshay.pem; fi
+  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_EVENT_TYPE == "push" ]; then ssh -o StrictHostKeyChecking=no -i akshay.pem ubuntu@ec2-54-159-69-0.compute-1.amazonaws.com "cd Snort_rule && sudo git pull"; fi
+  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_EVENT_TYPE == "push" ]; then ssh -o StrictHostKeyChecking=no -i akshay.pem ubuntu@ec2-54-159-69-0.compute-1.amazonaws.com "cd Snort_rule && docker-compose down"; fi
+  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_EVENT_TYPE == "push" ]; then ssh -o StrictHostKeyChecking=no -i akshay.pem ubuntu@ec2-54-159-69-0.compute-1.amazonaws.com "cd Snort_rule && docker image prune -a -f"; fi
+  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_EVENT_TYPE == "push" ]; then ssh -o StrictHostKeyChecking=no -i akshay.pem ubuntu@ec2-54-159-69-0.compute-1.amazonaws.com "cd Snort_rule && docker-compose up -d"; fi
