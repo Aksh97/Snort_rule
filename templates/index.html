@@ -1,0 +1,125 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+
+{% block styles %}
+{{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic') }}">
+  
+  
+{% endblock %}
+
+
+{% block title %}
+Snort Rule
+{% endblock %}
+
+
+{% block content %}
+
+ <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+       
+      </ul>
+      
+    </div>
+  </div>
+ </nav>
+
+ <div class="container">
+ 	<div class="row">
+ 		<div class="col-lg-12">
+ 			<div class="content">
+ 				<h1>Snort Rule Generation</h1>
+ 				<h3>Upload the pcap file for which you want to generate the Snort-Rule</h3>
+        <hr>
+
+
+<div class="box">
+  
+<form method="post" action="/" enctype="multipart/form-data">
+    <div class="inputBox">
+      <input type="text" name="source" autocomplete="off" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$" 
+      onkeyup="this.setAttribute('value', this.value);" value="">
+      <label>Source IP</label>
+    </div>
+
+     
+    <div class="inputBox">
+      <input type="text" name="destination" autocomplete="off"minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$"  
+      onkeyup="this.setAttribute('value', this.value);" value="">
+      <label>Destination IP</label>
+    </div>   
+    
+    <div class="inputBox">
+      <input type="text" name="sourcePort" autocomplete="off"  onkeyup="this.setAttribute('value', this.value);" value="">
+      <label>Source Port</label>
+    </div>
+    
+    <div class="inputBox">
+      <input type="text" name="destinationPort" autocomplete="off" onkeyup="this.setAttribute('value', this.value);" value="">
+      <label>Destination Port</label>
+    </div>
+    
+    <div class="inputBox">   
+    
+      <input type="text" name="protocol" autocomplete="off" onkeyup="this.setAttribute('value', this.value);" value="">
+      <label>Protocol</label>
+    </div>
+
+<p>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+  {% endwith %}
+</p>    
+
+    
+    
+      <input type="file" name="file" autocomplete="off" required>
+    <input type="submit" value="Submit">
+
+
+    <p class="space-above"><strong>{{ message }}</strong></p>
+
+</form>
+
+ 
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+ 				
+
+ </div>
+</div>
+
+ <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+ <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
