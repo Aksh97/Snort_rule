@@ -1,0 +1,8 @@
+numpy
+flask
+pandas
+requests
+flask_bootstrap
+flask_wtf
+wtforms
+werkzeug
